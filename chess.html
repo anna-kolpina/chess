@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+ 
+<title>ШАХМАТЫ</title>
+<style>
+* {
+	padding: 0;
+	margin: 0;
+}
+h1 {
+	padding-top: 20px;
+	padding-left: 255px;
+}
+.border {
+	border: 1px solid black;
+	margin-left: 100px;
+	margin-top: 10px;
+}
+.tr {
+	border: 1px solid black;
+}
+.td {
+	border: 1px solid black;
+}
+</style>
+</head>
+<body>
+
+<h1>ШАХМАТЫ</h1>
+	
+<script type="text/javascript">
+
+function table(rows, cols, c1, c2, z){  // row-строки cell-ячейки
+
+  var table = document.createElement('TABLE'); // создает элемент table
+
+  table.className = 'border'; // создаем класс
+
+  document.body.appendChild(table); // добавляет в родит. эл-т в качестве последнего эл-та эл-т table
+
+  var tr = document.createElement('TR'); // создает элемент tr
+
+  tr.className = 'tr'; // создаем класс
+
+  var td = document.createElement('TD'); // создает элемент td
+
+  td.className = 'td'; // создаем класс
+
+  td.style.width = z+'px'; // задаем ширину td
+
+  td.style.height = z+'px'; // задаем высоту td
+
+
+  for(var i=0; i<rows; i++){ // условие цикла, задаем в функции
+
+    table.appendChild(tr.cloneNode(true)); // в родит.эл-т table добавляет в кач-ве последнего - (копию tr, если стоит true то полная копия вместе со всеми дочерними элементами)
+
+    for(var j=0; j<cols; j++){ // условие цикла, задаем в функции
+
+      var _tr = table.getElementsByTagName('TR')[i]; // возращает массив, содержащий ссылки на все эл-ты указанного типа, т.е. TR
+
+      _tr.appendChild(td.cloneNode(true)); // в родит.эл-т _tr добавляет в кач-ве последнего - (копию td, если стоит true то полная копия вместе со всеми дочерними элементами)
+
+      var _td = table.getElementsByTagName('TR')[i].getElementsByTagName('TD')[j]; // я так понимаю возращает массив в массиве TR, содержащий ссылки на все эл-ты указанного типа, т.е. TD
+
+      if((i%2==0 && j%2==0) || i%2==1 && j%2==1)
+
+        _td.style.backgroundColor = c2; //элементы массива цветом с2
+
+      else
+        _td.style.backgroundColor = c1; //иначе элементы массива цветом с1
+    }
+  }
+}
+
+//ну и сама функция с параметрами:
+table(10, 10, 'white', 'black', 50);
+
+
+</script>
+</body>
+</html>
