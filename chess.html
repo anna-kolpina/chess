@@ -35,21 +35,17 @@ h1 {
 function table(rows, cols, c1, c2, z){  // row-строки cell-ячейки
 
   var table = document.createElement('TABLE'); // создает элемент table
-
   table.className = 'border'; // создаем класс
 
   document.body.appendChild(table); // добавляет в родит. эл-т в качестве последнего эл-та эл-т table
 
-  var tr = document.createElement('TR'); // создает элемент tr
-
+  this.tr = document.createElement('TR'); // создает элемент tr
   tr.className = 'tr'; // создаем класс
 
-  var td = document.createElement('TD'); // создает элемент td
-
+  this.td = document.createElement('TD'); // создает элемент td
   td.className = 'td'; // создаем класс
 
   td.style.width = z+'px'; // задаем ширину td
-
   td.style.height = z+'px'; // задаем высоту td
 
 
@@ -59,14 +55,13 @@ function table(rows, cols, c1, c2, z){  // row-строки cell-ячейки
 
     for(var j=0; j<cols; j++){ // условие цикла, задаем в функции
 
-      var _tr = table.getElementsByTagName('TR')[i]; // возращает массив, содержащий ссылки на все эл-ты указанного типа, т.е. TR
+      this._tr = table.getElementsByTagName('TR')[i]; // возращает массив, содержащий ссылки на все эл-ты указанного типа, т.е. TR
 
       _tr.appendChild(td.cloneNode(true)); // в родит.эл-т _tr добавляет в кач-ве последнего - (копию td, если стоит true то полная копия вместе со всеми дочерними элементами)
 
-      var _td = table.getElementsByTagName('TR')[i].getElementsByTagName('TD')[j]; // я так понимаю возращает массив в массиве TR, содержащий ссылки на все эл-ты указанного типа, т.е. TD
+      this._td = table.getElementsByTagName('TR')[i].getElementsByTagName('TD')[j]; // я так понимаю возращает массив в массиве TR, содержащий ссылки на все эл-ты указанного типа, т.е. TD
 
       if((i%2==0 && j%2==0) || i%2==1 && j%2==1)
-
         _td.style.backgroundColor = c2; //элементы массива цветом с2
 
       else
@@ -78,6 +73,10 @@ function table(rows, cols, c1, c2, z){  // row-строки cell-ячейки
 //ну и сама функция с параметрами:
 table(10, 10, 'white', 'black', 50);
 
+
+// а вот так не работает:
+//var chess_1 = new table(10, 10, 'white', 'black', 50);
+//chess_1.table(10, 10, 'white', 'black', 50);
 
 </script>
 </body>
